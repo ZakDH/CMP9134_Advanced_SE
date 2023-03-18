@@ -20,6 +20,17 @@ class Account:
             raise ValueError(f"Withdrawal of {amount} failed. Insufficient funds.")
         self.__balance -= amount
         print(f"Withdrawal of {amount} was successful. New balance: {self.__balance}")
+    
+    def transfer(self, amount, recipient):
+        if self.__balance >= amount:
+            self.__balance -= amount
+            recipient.deposit(amount)
+            print(f"Transfer of {amount} was successful. New balance: {self.__balance}")
+        else:
+            print(f"Transfer of {amount} failed. Insufficient funds.")
+
+    def __str__(self):
+        return f"Account Number: {self.__accountNumber}, Balance: {self.__balance}"
 
 class Bank:    
     def __init__(self):
@@ -33,7 +44,7 @@ class Bank:
     def getAccount(self, accountNumber):
         return self.__accounts.get(accountNumber)
 
-    def view_account_detail(self, accountNumber):
+    def viewDetails(self, accountNumber):
         account = self.__accounts.get(accountNumber)
         if account:
             print(account)
@@ -74,6 +85,25 @@ while True:
             account.withdraw(withdrawAmount)
         else:
             print("Account has not been found...")
+
+    elif choice == "4":
+        accountFrom = input("Enter the account number you want to transfer funds from: ")
+        accountFrom = bank.getAccount(accountFrom)
+        if accountFrom:
+            accountTo = input("Enter the account number you want to transfer funds to: ")
+            accountTo = bank.getAccount(accountTo)
+            if accountTo:
+                amount = float(input("Enter amount to transfer: "))
+                accountFrom.transfer(amount, accountTo)
+            else:
+                print("Recipient account has not been found...")
+        else:
+            print("Account has not been found...")
+    
+    elif choice == "5":
+        accountNumber = input("Enter account number: ")
+        bank.viewDetails(accountNumber)
+
     elif choice == "6":
         print("Exiting program...")
         break
