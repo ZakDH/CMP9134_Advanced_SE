@@ -9,11 +9,14 @@ class Account:
 
     def checkBalance(self):
         return self.__balance
+
     
     def withdraw(self, amount):
         if self.__balance < amount:
             raise ValueError("Insufficient balance, please re-enter a withdrawal amount...")
         self.__balance -= amount
+=======
+
 
 def createAccount(name):
     account_number = str(random.randint(100000, 999999))
@@ -25,6 +28,7 @@ def createAccount(name):
 # Example usage
 name = input("What is your first name?: ")
 account = createAccount(name)
+
 while True:
     deposit = input("How much do you want to deposit into your new account?: ")
     try:
@@ -51,4 +55,9 @@ while True:
         except ValueError:
             print("Please enter a valid amount to be deposited...")
 account.withdraw(intWithdraw)
+=======
+deposit = input("How much do you want to deposit into your new account?: ")
+deposit = int(deposit)
+account.deposit(deposit)
+
 print(account.checkBalance())
