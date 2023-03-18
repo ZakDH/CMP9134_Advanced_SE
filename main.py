@@ -20,7 +20,17 @@ def createAccount(name):
 # Example usage
 name = input("What is your first name?: ")
 account = createAccount(name)
-deposit = input("How much do you want to deposit into your new account?: ")
+while True:
+    deposit = input("How much do you want to deposit into your new account?: ")
+    try:
+        intDeposit = int(deposit)
+        break;
+    except ValueError:
+        try:
+            float(deposit)
+            break;
+        except ValueError:
+            print("Please enter a valid amount to be deposited...")
 deposit = int(deposit)
 account.deposit(deposit)
 print(account.checkBalance())
