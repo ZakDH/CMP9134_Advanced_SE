@@ -35,11 +35,3 @@ class Bank:
             accountTo.deposit(amount, accountTo)
         except ValueError as e:
             print(str(e))
-    
-    def listAccounts(self):
-        if len(self.accounts) == 0:
-            print("No accounts found.")
-            return
-        for account in self.accounts.values():
-            print(f"{account.getOwnerName()}: {account.getAccountNumber()}, Balance: {account.checkBalance()}")
-

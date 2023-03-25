@@ -21,13 +21,5 @@ class Account:
         self.balance -= amount
         print(f"Withdrawal of {amount:.2f} from {account} was successful.\nNew balance is: {self.balance:.2f}")
     
-    # def transfer(self, amount, recipient):
-    #     if self.balance >= amount:
-    #         self.balance -= amount
-    #         recipient.deposit(amount)
-    #         print(f"Transfer of {amount} was successful. New balance: {self.balance}")
-    #     else:
-    #         print(f"Transfer of {amount} failed. Insufficient funds.")
-
     def __str__(self):
-        return f"Account Number: {self.accountNumber}, Balance: {self.balance:.2f}"
+        return self.accountNumber
