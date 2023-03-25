@@ -17,7 +17,11 @@ class Bank:
     def viewDetails(self, accountNumber):
         account = self.accounts.get(accountNumber)
         if account:
-            print(account)
+                print("--Account Details--")
+                print(f"\nFirst Name: {account.firstName}")
+                print(f"Last Name: {account.lastName}")
+                print(f"Account Number: {account.getAccountNumber()}")
+                print(f"Balance: {account.checkBalance():.2f}\n")
         else:
             print("Account not found.")
     

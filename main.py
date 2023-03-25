@@ -63,17 +63,8 @@ def main():
         
         elif choice == "5":
             accountNumber = input("Enter account number: ")
-            account = bank.getAccount(accountNumber)
-            if account:
-                print("--Account Details--")
-                print(f"\nFirst Name: {account.firstName}")
-                print(f"Last Name: {account.lastName}")
-                print(f"Account Number: {account.getAccountNumber()}")
-                print(f"Balance: {account.checkBalance():.2f}\n")
-            else:
-                print("Account not found.")
-            #bank.viewDetails(accountNumber)
-
+            bank.viewDetails(accountNumber)
+            
         elif choice == "6":
             print("Exiting program...")
             break
